@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index Page</title>
-</head>
-<body>
+{% extends 'layouts/base.html' %}
+
+{% block title %} Profile {% endblock%}
+
+{% block body %}
+
     <h1> This my home page ----> in flask </h1>
     <h1> List all courses </h1>
         {{ mycourses }}
-<!--        {{students}}-->
-    <table style="border: 2px solid black; ">
+    <table class="table" >
         <tr> <th> ID</th> <th> Name</th> <th>Track</th>
             <th>Show</th>
         </tr>
@@ -18,10 +16,9 @@
                 <td> {{student['id']}}</td>
                  <td> {{student['name']}}</td>
                  <td> {{student['track']}}</td>
-                <td> <a href="/landing/{{student['id']}}"> Show </a></td>
-                <td> <a href="{{url_for('student.profile', id=student['id'])}}">Show </a></td>
+<!--                <td> <a href="/landing/{{student['id']}}"> Show </a></td>-->
+                <td> <a  class="btn btn-info" href="{{url_for('student.profile', id=student['id'])}}">Show </a></td>
             </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+{% endblock %}

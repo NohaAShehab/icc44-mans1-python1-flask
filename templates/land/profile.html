@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-</head>
-<body>
-    <h1> Student Profile </h1>
-    {{student}}
-</body>
-</html>
+{% extends 'layouts/base.html' %}
+
+{% block title %} Profile {% endblock%}
+
+{% block body %}
+        {{student}}
+{% endblock %}
