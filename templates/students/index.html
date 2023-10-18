@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+{% import 'macros.html' as list %}
+
+{% block title %} Students  {% endblock%}
+
+{% block body %}
+    <h1> All Students </h1>
+    {{students}}
+    <table class="table" >
+        <tr> <th> ID</th> <th> Name</th> <th>Image</th>
+            <th>Show</th>
+        </tr>
+        {% for student in students %}
+            <tr>
+                    <td>{{student.id}}</td>
+                    <td> {{student.name}}</td>
+                    <td><img
+                            width="200" height="200"
+                            src="{{url_for('static', filename='/students/images/'+student.image)}}"> </td>
+                    <td>
+                        <a class="btn btn-primary" href="{{url_for('students.show', id=student.id)}}"> Show</a>
+                    </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+    {{list.listobjects(students)}}
+
+    {{list.sayhello()}}
+{% endblock %}

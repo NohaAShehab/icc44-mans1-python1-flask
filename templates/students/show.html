@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Students  {% endblock%}
+
+{% block body %}
+    <h1> Student </h1>
+   <div class="card" style="width: 18rem;">
+<!--  <img src="{{ url_for('static', filename='students/images/'+student.image)}}" class="card-img-top" alt="...">-->
+    <img src="{{ url_for('static', filename=student.get_image_url())}}" class="card-img-top" alt="...">
+
+       <div class="card-body">
+    <h5 class="card-title">{{student.name}}</h5>
+    <a href="{{url_for('students.index')}}" class="btn btn-primary">Back to all students </a>
+  </div>
+</div>
+{% endblock %}

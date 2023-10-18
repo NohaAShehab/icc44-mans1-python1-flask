@@ -1,0 +1,9 @@
+{% macro listobjects(objects) %}
+    {% for obj in objects %}
+        <li> {{obj}} </li>
+    {% endfor %}
+{% endmacro %}
+
+{% macro sayhello() %}
+    <h1 class="bg-black text-light">Hello world </h1>
+{% endmacro%}
