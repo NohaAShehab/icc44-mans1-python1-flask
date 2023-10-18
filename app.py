@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request
-
+from flask import render_template
 # create new flask application
 app = Flask(__name__)  # use flask --app app run
 
@@ -51,6 +51,27 @@ def page_not_found(error):
              f"Sorry Requested page Not Found !!!"
              f"{error}"
              f"</h1>")
+
+
+""" ============= Render template ========"""
+
+students = [{'id':1, "name":'Ahmed', 'track':'python'},
+            {'id':2, "name":'Abdelrahman', 'track':'python'},
+            {'id':3, "name":'Eman', 'track':'python'},
+            {'id':4, "name":'Enas', 'track':'python'}]
+@app.route('/landing')
+def land():
+    return  render_template('land/landing.html',
+                            mycourses=courses, students= students)
+@app.route('/landing/<int:id>')
+def student_profile(id):
+    filtered_students= list(filter(lambda std:std['id']==id, students))
+    if filtered_students:
+        student = filtered_students[0]
+        return render_template('land/profile.html', student=student)
+    # return 'Not Found', 404
+    return render_template('errors/page_not_found.html'), 404
+
 
 ## another option to the application
 if __name__ == '__main__':
