@@ -59,11 +59,11 @@ students = [{'id':1, "name":'Ahmed', 'track':'python'},
             {'id':2, "name":'Abdelrahman', 'track':'python'},
             {'id':3, "name":'Eman', 'track':'python'},
             {'id':4, "name":'Enas', 'track':'python'}]
-@app.route('/landing')
+@app.route('/landing', endpoint='landing')
 def land():
     return  render_template('land/landing.html',
                             mycourses=courses, students= students)
-@app.route('/landing/<int:id>')
+@app.route('/landing/<int:id>', endpoint='student.profile')
 def student_profile(id):
     filtered_students= list(filter(lambda std:std['id']==id, students))
     if filtered_students:

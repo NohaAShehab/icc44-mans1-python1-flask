@@ -19,6 +19,7 @@
                  <td> {{student['name']}}</td>
                  <td> {{student['track']}}</td>
                 <td> <a href="/landing/{{student['id']}}"> Show </a></td>
+                <td> <a href="{{url_for('student.profile', id=student['id'])}}">Show </a></td>
             </tr>
         {% endfor %}
     </table>
